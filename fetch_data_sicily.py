@@ -1,6 +1,5 @@
 import requests
 import json
-import os
 
 def fetch_data():
     url = "https://dati.regione.sicilia.it/api/3/action/package_list"
@@ -25,33 +24,6 @@ def fetch_dataset_details(dataset_id):
         print(f"Failed to fetch details for dataset: {dataset_id}")
         return None
 
-def save_precipitation_data(details):
-    if details:
-        resources = details.get('result', {}).get('resources', [])
-        if not resources:
-            print("No resources found for the dataset.")
-            return
-        
-        os.makedirs('datasets', exist_ok=True)
-
-        for resource in resources:
-            resource_url = resource.get('url')
-            resource_name = resource.get('name')
-
-            if resource_url:
-                resource_response = requests.get(resource_url)
-                if resource_response.status_code == 200:
-                    file_name = f"datasets/{resource_name}.json"
-                    with open(file_name, 'w') as f:
-                        json.dump(resource_response.json(), f, indent=4)
-                    print(f"Saved dataset: {file_name}")
-                else:
-                    print(f"Failed to download dataset: {resource_name}")
-            else:
-                print(f"No URL found for resource: {resource_name}")
-    else:
-        print("No details available to save data.")
-
 if __name__ == "__main__":
     # Fetch the list of datasets
     data = fetch_data()
@@ -59,6 +31,11 @@ if __name__ == "__main__":
     # Fetch details for the 'sias-precipitazioni' dataset
     dataset_id = 'sias-precipitazioni'  # Specify the dataset you want to explore
     details = fetch_dataset_details(dataset_id)
-    
-    # Save precipitation datasets
-    save_precipitation_data(details)
+
+    # Save the details to a JSON file
+    if details:
+        with open('dataset_details.json', 'w') as f:
+            json.dump(details, f, indent=4)
+        print("Details saved to dataset_details.json")
+    else:
+        print("Failed to fetch details.")
