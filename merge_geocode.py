@@ -25,6 +25,12 @@ for year_folder in os.listdir(data_dir):
         output_year_dir = os.path.join(output_dir, year_folder)
         os.makedirs(output_year_dir, exist_ok=True)
         
+        # Create subdirectories for Shapefiles and GeoJSON files
+        esri_shp_dir = os.path.join(output_year_dir, 'esri_shp')
+        geojson_dir = os.path.join(output_year_dir, 'geoJSON')
+        os.makedirs(esri_shp_dir, exist_ok=True)
+        os.makedirs(geojson_dir, exist_ok=True)
+        
         # Iterate over each CSV file in the year directory
         for csv_file in os.listdir(year_path):
             if csv_file.endswith('.csv'):
@@ -40,9 +46,14 @@ for year_folder in os.listdir(data_dir):
                 merged_df['geometry'] = merged_df.apply(lambda row: Point(float(row['X_LON']), float(row['Y_LAT'])), axis=1)
                 geo_df = gpd.GeoDataFrame(merged_df, geometry='geometry')
                 
-                # Define the output file path
-                output_file_path = os.path.join(output_year_dir, os.path.splitext(csv_file)[0] + '.shp')
+                # Define the output file paths for Shapefile and GeoJSON
+                output_shp_path = os.path.join(esri_shp_dir, os.path.splitext(csv_file)[0] + '.shp')
+                output_geojson_path = os.path.join(geojson_dir, os.path.splitext(csv_file)[0] + '.geojson')
                 
-                # Save the GeoDataFrame to the corresponding year folder in output_dir as a Shapefile
-                geo_df.to_file(output_file_path, driver="ESRI Shapefile")
-                print(f"Saved GeoDataFrame to {output_file_path}")
+                # Save the GeoDataFrame as a Shapefile
+                geo_df.to_file(output_shp_path, driver="ESRI Shapefile")
+                print(f"Saved GeoDataFrame to {output_shp_path}")
+
+                # Save the GeoDataFrame as a GeoJSON file
+                geo_df.to_file(output_geojson_path, driver="GeoJSON")
+                print(f"Saved GeoDataFrame to {output_geojson_path}")
