@@ -36,9 +36,11 @@ requests
 json
 os
 zipfile
+
+//------------------------------------------------------------//
 To replicate the environment, you can create a conda environment and install the necessary libraries:
 
-/bash/
+/bash/ /WINDOWS powershell/
 
 conda create -n sicily python=3.x
 conda activate sicily
@@ -47,26 +49,29 @@ pip install earthengine-api geemap requests
 Setup
 Clone the repository and navigate to the project directory:
 
-/bash/
+/bash/------------UNDER REVISION
 
-git clone https://github.com/your-username/sicily-precipitation-data.git
-cd sicily-precipitation-data
+git clone https://github.com/fener95/sicily-precip.git
+cd sicily-precip
+/*
 Usage
 Fetching Data
-To fetch the precipitation data and station details, run:
 
-/bash/
+To fetch the precipitation data and station details, run:
+*/
+/bash/------------UNDER REVISION
 
 python fetch_stations.py
 python fetch_data_sicily.py
 Preprocessing Data
 To preprocess and aggregate the data, run:
 
-/bash/
+/bash/------------UNDER REVISION
 
 python preproc_precipitations.py
 python merge_geocode.py
 
+//--------------------------------------------------------------------------------------------//
 Accessing the Data
 Processed data can be accessed in the preprocessed_datasets/ and geoDataframes/ directories. Depending on your needs, you can directly use these files for geospatial analysis or mapping.
 
