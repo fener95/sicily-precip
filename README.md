@@ -2,7 +2,9 @@ Attribution to: Region Siciliana, link at: https://dati.regione.sicilia.it
 license: Creative Commons Attribution 4.0 International (CC BY 4.0).
 
 Sicily Ground Precipitation Data Conversion and Analysis
+
 Description
+
 This project retrieves and processes raw precipitation data from Sicily, obtained via the CKAN API from the Region Siciliana data portal. The data, originally in CSV format, includes hourly precipitation values, which are then aggregated into monthly totals for each agrometeorological station (only SIAS stations network:http://www.sias.regione.sicilia.it/ ). The project converts these CSV files into various formats (JSON, GeoJSON, and SHP) and organizes them into yearly folders, making them readily available for geospatial analysis and mapping.
 
 Project Structure
