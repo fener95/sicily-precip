@@ -9,17 +9,28 @@ Project Structure
 The repository is organized as follows:
 
 datasets/: Contains the raw precipitation data in CSV format.
+
 preprocessed_datasets/: Contains cleaned and preprocessed data.
+
 geoDataframes/: Contains GeoDataFrames with merged and geocoded data.
+
 ee_fc/: Contains JSON files formatted for export as Feature Collection assets in Google Earth Engine (GEE).
+
 Main Scripts
 fetch_data_sicily.py: Fetches the raw precipitation data from the CKAN API.
+
 fetch_stations.py: Retrieves station location information using the CKAN API.
+
 preproc_precipitations.py: Aggregates the raw data into monthly totals and processes it by station.
+
 merge_geocode.py: Merges station locations with the aggregated data and geocodes the information.
+
 populate_datasets.py: Manages the organization of datasets into appropriate folders.
+
 testSHP.py: Tests the conversion of data into SHP files.
+
 Motivation
+
 The primary goal of this project is to make geospatial data on precipitation in Sicily easily accessible and ready for analysis. By providing the data in multiple formats and organizing it by year, this repository simplifies the process for researchers and analysts working on geospatial analysis, mapping, and environmental monitoring.
 
 Installation
@@ -82,9 +93,13 @@ Data Source
 The precipitation data is sourced from the CKAN API provided by the Region Siciliana:
 
 Data Attribution: Region Siciliana
+
 Data License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+
 Data Portal: Region Siciliana Data Portal (https://dati.regione.sicilia.it/)
+
 SIAS agro-meteo stations: http://www.sias.regione.sicilia.it/
+
 License
 This project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License. See the LICENSE file for details.
 
@@ -96,4 +111,5 @@ For any questions or feedback, please reach out via nerifederico1995@gmail.com.
 
 Acknowledgements
 Thanks to the Region Siciliana for providing open access to some(2019-2022) of the precipitation data.
+
 Special mention to the developers of the libraries and tools used in this project, including pandas, geopandas, earthengine-api, and geemap.
