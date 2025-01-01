@@ -56,7 +56,7 @@ sicily-precip/
 ├── LICENSE
 ├── README.md
 └── requirements.txt
-
+```
 ---
 
 ## 🚀 Getting Started
