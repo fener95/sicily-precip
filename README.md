@@ -1,117 +1,302 @@
-Attribution to: Region Siciliana, link at: https://dati.regione.sicilia.it
-license: Creative Commons Attribution 4.0 International (CC BY 4.0).
+Sicily Precipitation Data Analysis (sicily-precip)
 
-Sicily (SIAS)agrometeorological-stations Precipitation Data Conversion and Analysis
+  
 
-Description
+Welcome to the Sicily Precipitation Data Analysis repository! 🌧️🌍 Dive into comprehensive precipitation data from Sicily's agrometeorological stations, meticulously processed and ready for your geospatial analysis and environmental monitoring projects.
 
-This project retrieves and processes raw precipitation data from Sicily, obtained via the CKAN API from the Region Siciliana data portal. The data, originally in CSV format, includes hourly precipitation values, which are then aggregated into monthly totals for each agrometeorological station (only SIAS stations network:http://www.sias.regione.sicilia.it/ ). The project converts these CSV files into various formats (JSON, GeoJSON, and SHP) and organizes them into yearly folders, making them readily available for geospatial analysis and mapping.
+Table of Contents
 
-Project Structure
-The repository is organized as follows:
+📖 Description
 
-datasets/: Contains the raw precipitation data in CSV format.
+🔍 Project Structure
 
-preprocessed_datasets/: Contains cleaned and preprocessed data.
+🚀 Getting Started
 
-geoDataframes/: Contains GeoDataFrames with merged and geocoded data.
-
-ee_fc/: Contains JSON files formatted for export as Feature Collection assets in Google Earth Engine (GEE).
-
-Main Scripts
-fetch_data_sicily.py: Fetches the raw precipitation data from the CKAN API.
-
-fetch_stations.py: Retrieves station location information using the CKAN API.
-
-preproc_precipitations.py: Aggregates the raw data into monthly totals and processes it by station.
-
-merge_geocode.py: Merges station locations with the aggregated data and geocodes the information.
-
-populate_datasets.py: Manages the organization of datasets into appropriate folders.
-
-testSHP.py: Tests the conversion of data into SHP files.
-
-Motivation
-
-The primary goal of this project is to make geospatial data on precipitation in Sicily easily accessible and ready for analysis. By providing the data in multiple formats and organizing it by year, this repository simplifies the process for researchers and analysts working on geospatial analysis, mapping, and environmental monitoring.
+Prerequisites
 
 Installation
-Prerequisites
-Ensure you have the following libraries installed in your environment:
 
-Python 3.x
-conda (for environment management)
-pandas
-geopandas
-earthengine-api (ee)
-geemap
-requests
-json
-os
-zipfile
-
-//------------------------------------------------------------//
-To replicate the environment, you can create a conda environment and install the necessary libraries:
-
-/bash/ /WINDOWS powershell/
-
-conda create -n sicily python=3.x
-conda activate sicily
-conda install pandas geopandas
-pip install earthengine-api geemap requests
 Setup
-Clone the repository and navigate to the project directory:
 
-/bash/------------UNDER REVISION
+
+⚙️ Usage
+
+Fetching Data
+
+Preprocessing Data
+
+
+📂 Accessing the Data
+
+🔧 Extending the Project
+
+📚 Data Source
+
+📄 License
+
+🤝 Contributing
+
+📬 Contact
+
+🙏 Acknowledgements
+
+
+
+---
+
+📖 Description
+
+The sicily-precip project is designed to retrieve, convert, and analyze precipitation data from Sicily's agrometeorological stations (SIAS). Leveraging the CKAN API from the Region Siciliana Data Portal, this repository transforms raw hourly precipitation CSV data into monthly aggregated totals. The processed data is then converted into versatile formats like JSON, GeoJSON, and SHP, organized by year for seamless integration into geospatial tools and mapping applications.
+
+
+---
+
+🔍 Project Structure
+
+sicily-precip/
+│
+├── datasets/                # Raw precipitation data in CSV format
+├── preprocessed_datasets/   # Cleaned and aggregated monthly data
+├── geoDataframes/           # GeoDataFrames with geocoded station data
+├── ee_fc/                   # JSON files for Google Earth Engine Feature Collections
+│
+├── scripts/
+│   ├── fetch_data_sicily.py
+│   ├── fetch_stations.py
+│   ├── preproc_precipitations.py
+│   ├── merge_geocode.py
+│   ├── populate_datasets.py
+│   └── testSHP.py
+│
+├── LICENSE
+├── README.md
+└── requirements.txt
+
+
+---
+
+🚀 Getting Started
+
+Follow these steps to set up the project on your local machine for development and analysis.
+
+Prerequisites
+
+Ensure you have the following installed:
+
+Python 3.x: Download Python
+
+Conda: Install Conda
+
+
+Installation
+
+1. Clone the Repository
 
 git clone https://github.com/fener95/sicily-precip.git
 cd sicily-precip
-/*
-Usage
+
+
+2. Create a Conda Environment
+
+Create and activate a new Conda environment named sicily:
+
+conda create -n sicily python=3.x
+conda activate sicily
+
+
+3. Install Dependencies
+
+Install the required Python libraries:
+
+conda install pandas geopandas
+pip install earthengine-api geemap requests
+
+Alternatively, install all dependencies at once:
+
+pip install -r requirements.txt
+
+
+
+Setup
+
+1. Authenticate Google Earth Engine (GEE)
+
+If you plan to use GEE features, authenticate your account:
+
+earthengine authenticate
+
+
+2. Verify Directory Structure
+
+Ensure all folders (datasets/, preprocessed_datasets/, etc.) are present. If not, create them:
+
+mkdir datasets preprocessed_datasets geoDataframes ee_fc scripts
+
+
+
+
+---
+
+⚙️ Usage
+
 Fetching Data
 
-To fetch the precipitation data and station details, run:
-*/
-/bash/------------UNDER REVISION
+Retrieve the latest precipitation data and station information from the Region Siciliana data portal.
 
-python fetch_stations.py
-python fetch_data_sicily.py
+1. Fetch Station Information
+
+python scripts/fetch_stations.py
+
+This script retrieves location details of all SIAS agrometeorological stations.
+
+
+2. Fetch Precipitation Data
+
+python scripts/fetch_data_sicily.py
+
+This script downloads raw hourly precipitation CSV files for each station.
+
+
+
 Preprocessing Data
-To preprocess and aggregate the data, run:
 
-/bash/------------UNDER REVISION
+Aggregate and process the raw data for analysis.
 
-python preproc_precipitations.py
-python merge_geocode.py
+1. Aggregate Precipitation Data
 
-//--------------------------------------------------------------------------------------------//
-Accessing the Data
-Processed data can be accessed in the preprocessed_datasets/ and geoDataframes/ directories. Depending on your needs, you can directly use these files for geospatial analysis or mapping.
+python scripts/preproc_precipitations.py
 
-Extending the Project
-You can fork the repository and apply similar methods to other public APIs or add additional data types (e.g., temperature data). Contributions are welcome!
+This script aggregates hourly data into monthly totals per station.
 
-Data Source
-The precipitation data is sourced from the CKAN API provided by the Region Siciliana:
+
+2. Merge and Geocode Data
+
+python scripts/merge_geocode.py
+
+Combines aggregated data with station locations and prepares GeoDataFrames.
+
+
+3. Organize Datasets
+
+python scripts/populate_datasets.py
+
+Structures the processed data into yearly folders and converts them into JSON, GeoJSON, and SHP formats.
+
+
+4. Test SHP Conversion
+
+python scripts/testSHP.py
+
+Validates the SHP file conversion process.
+
+
+
+
+---
+
+📂 Accessing the Data
+
+Once preprocessing is complete, access the data in the following directories:
+
+preprocessed_datasets/: Cleaned and aggregated monthly precipitation data.
+
+geoDataframes/: Geocoded dataframes for spatial analysis.
+
+ee_fc/: JSON files formatted for Google Earth Engine Feature Collections.
+
+
+You can directly utilize these files in GIS applications, mapping tools, or integrate them into your environmental monitoring workflows.
+
+
+---
+
+🔧 Extending the Project
+
+Enhance the repository by:
+
+Forking the Repository: Apply similar data processing methods to other public APIs or datasets.
+
+Adding Additional Data Types: Incorporate other meteorological data such as temperature, humidity, or wind speed.
+
+Improving Data Visualizations: Create interactive maps or dashboards using libraries like geemap or Plotly.
+
+
+Contributions are highly encouraged! See the Contributing section for more details.
+
+
+---
+
+📚 Data Source
+
+Primary Data Provider: Region Siciliana Data Portal
+
+SIAS Agrometeorological Stations: SIAS Network
+
+API Access: CKAN API from Region Siciliana
+
 
 Data Attribution: Region Siciliana
-
 Data License: Creative Commons Attribution 4.0 International (CC BY 4.0)
 
-Data Portal: Region Siciliana Data Portal (https://dati.regione.sicilia.it/)
 
-SIAS agro-meteo stations: http://www.sias.regione.sicilia.it/
+---
 
-License
-This project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License. See the LICENSE file for details.
+📄 License
 
-Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your changes. For major changes, please open an issue first to discuss what you would like to change.
+This project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License. You are free to share and adapt the material for any purpose, even commercially, as long as appropriate credit is given.
 
-Contact
-For any questions or feedback, please reach out via nerifederico1995@gmail.com.
 
-Acknowledgements
-Thanks to the Region Siciliana for providing open access to some(2019-2022) of the precipitation data.
+---
 
-Special mention to the developers of the libraries and tools used in this project, including pandas, geopandas, earthengine-api, and geemap.
+🤝 Contributing
+
+Contributions are welcome! Whether you're fixing bugs, improving documentation, or adding new features, your help is appreciated.
+
+1. Fork the Repository
+
+
+2. Create a New Branch
+
+git checkout -b feature/YourFeature
+
+
+3. Commit Your Changes
+
+git commit -m "Add your message"
+
+
+4. Push to the Branch
+
+git push origin feature/YourFeature
+
+
+5. Open a Pull Request
+
+
+
+For major changes, please open an issue first to discuss your ideas.
+
+
+---
+
+📬 Contact
+
+Have questions or feedback? Reach out to me at:
+
+📧 nerifederico1995@gmail.com
+
+
+---
+
+🙏 Acknowledgements
+
+Data Provider: Thanks to the Region Siciliana for providing open access to precipitation data (2019-2022).
+
+Libraries and Tools: Special thanks to the developers of pandas, geopandas, earthengine-api, and geemap for their invaluable tools that made this project possible.
+
+
+
+---
+
+Happy analyzing! 📊🌦️
+
