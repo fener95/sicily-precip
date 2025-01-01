@@ -34,6 +34,7 @@ Additionally, the repository includes methodologies for downscaling Satellite Pr
 
 ## 🔍 Project Structure
 
+```plaintext
 sicily-precip/
 │
 ├── datasets/                # Raw precipitation data in CSV format
@@ -55,7 +56,6 @@ sicily-precip/
 ├── LICENSE
 ├── README.md
 └── requirements.txt
-
 
 ---
 
