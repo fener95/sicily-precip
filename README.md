@@ -2,6 +2,12 @@
 
 Welcome to the Sicily Precipitation Data Analysis repository! 🌧️🌍 Dive into comprehensive precipitation data from Sicily's agrometeorological stations, meticulously processed and ready for your geospatial analysis and environmental monitoring projects.
 
+
+
+https://github.com/user-attachments/assets/01edb92e-fa80-4545-b152-e7f355551825
+
+
+
 ## Table of Contents
 
 - 📖 [Description](#-description)
